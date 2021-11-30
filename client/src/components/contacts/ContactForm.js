@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
+import { CLEAR_CURRENT } from '../../context/types';
 
 const ContactForm = () => {
     const contactContext = useContext(ContactContext);
 
-    const { addContact, current } = contactContext;
+    const { addContact, clearCurrent, current } = contactContext;
 
     useEffect(() => {
         if(current !== null) {
@@ -41,6 +42,10 @@ const ContactForm = () => {
             type: 'personal'  
         });
     };
+
+    const clearAll = () => {
+        clearCurrent();
+    }
     
     return (
         <form onSubmit={onSubmit}>
@@ -75,8 +80,13 @@ const ContactForm = () => {
              onChange={onChange}
             /> Professional{' '}
             <div>
-                <input type='submit' value={current ? 'Update Contact' : 'Add Contact'} className='btn btn-primary btn-block'/>
+                <input type='submit' value={current ? 'Update Contact' : 'Add Contact'} 
+                className='btn btn-primary btn-block'/>
             </div>
+                {current && ( 
+                <div>
+                <button className='btn btn-light btn-block' onClick={clearAll}>Clear</button>
+            </div>)}
         </form>
     )
 }
