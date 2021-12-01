@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
-import { CLEAR_CURRENT } from '../../context/types';
 
 const ContactForm = () => {
     const contactContext = useContext(ContactContext);
 
-    const { addContact, clearCurrent, current } = contactContext;
+    const { addContact, updateContact, clearCurrent, current } = contactContext;
 
     useEffect(() => {
         if(current !== null) {
@@ -34,18 +33,17 @@ const ContactForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        addContact(contact);
-        setContact({
-            name: '',
-            email: '',
-            phone: '',
-            type: 'personal'  
-        });
+        if(current === null) {
+            addContact(contact);
+        } else {
+            updateContact();
+        }
+        clearAll();
     };
 
     const clearAll = () => {
         clearCurrent();
-    }
+    };
     
     return (
         <form onSubmit={onSubmit}>
@@ -89,6 +87,6 @@ const ContactForm = () => {
             </div>)}
         </form>
     )
-}
+};
 
 export default ContactForm;
