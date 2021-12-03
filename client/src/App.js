@@ -9,12 +9,15 @@ import Login from './components/auth/Login';
 
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
+import AlertState from './context/alert/AlertState';
+
 import './App.css';
 
 const App = () => {
   return (
     <AuthState>
     <ContactState>
+    <AlertState>
     <Router>
     <Fragment className="App">
       <Navbar />
@@ -28,6 +31,7 @@ const App = () => {
     </div>
     </Fragment>
     </Router>
+    </AlertState>
     </ContactState>
     </AuthState>
   );
