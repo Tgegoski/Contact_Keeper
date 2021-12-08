@@ -13,6 +13,7 @@ import {
   CONTACT_ERROR
 } from '../types';
 
+// add error to state
 const ContactState = (props) => {
   const initialState = {
     contacts: [],
