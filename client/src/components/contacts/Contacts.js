@@ -10,8 +10,8 @@ const Contacts = () => {
   const { contacts, filtered, getContacts, loading } = contactContext;
 
   useEffect(() => {
-      getContacts();
-    // eslint-disable-next-line  
+    getContacts();
+    // eslint-disable-next-line
   }, []);
 
   if (contacts !== null && contacts.length === 0 && !loading) {
@@ -20,34 +20,24 @@ const Contacts = () => {
 
   return (
     <Fragment>
-    {contacts !== null && !loading ? (
-       <TransitionGroup>
-        {filtered !== null
-          ? filtered.map((contact) => (
-              <CSSTransition 
-              key={contact._id} 
-              timeout={500} 
-              className='item'
-              >
-                <ContactItem contact={contact} />
-              </CSSTransition>
-            ))
-          : contacts.map((contact) => (
-              <CSSTransition 
-              key={contact._id} 
-              timeout={500} 
-              className='item'
-                >
-             <ContactItem contact={contact} />
-              </CSSTransition>
-        ))}   
-    
-      </TransitionGroup>
-    ) : (
+      {contacts !== null && !loading ? (
+        <TransitionGroup>
+          {filtered !== null
+            ? filtered.map((contact) => (
+                <CSSTransition key={contact._id} timeout={500} className='item'>
+                  <ContactItem contact={contact} />
+                </CSSTransition>
+              ))
+            : contacts.map((contact) => (
+                <CSSTransition key={contact._id} timeout={500} className='item'>
+                  <ContactItem contact={contact} />
+                </CSSTransition>
+              ))}
+        </TransitionGroup>
+      ) : (
         <Spinner />
-    )}
-     </Fragment>
-
+      )}
+    </Fragment>
   );
 };
 
