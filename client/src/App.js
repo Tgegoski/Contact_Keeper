@@ -32,9 +32,9 @@ const App = () => {
                   <Route exact path='/' component={<PrivateRoute />} >
                     <Route exact path='/' component={Home} />
                   </Route>
-                  <Route exact path='about' component={About} />
-                  <Route exact path='register' component={<Register />} />
-                  <Route exact path='login' component={<Login />} />
+                  <Route exact path='About' component={About} />
+                  <Route exact path='Register' component={<Register />} />
+                  <Route exact path='Login' component={<Login />} />
                 </Routes>
               </div>
             </Fragment>
