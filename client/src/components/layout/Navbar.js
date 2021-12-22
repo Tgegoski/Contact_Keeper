@@ -1,29 +1,28 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import AuthContext from '../../context/auth/authContext';
-import ContactContext from '../../context/contact/contactContext';
+import { useAuth, logout } from '../../context/auth/AuthState';
+import { useContacts, clearContacts } from '../../context/contact/ContactState';
 
 const Navbar = ({ title, icon }) => {
-  const authContext = useContext(AuthContext);
-  const contactContext = useContext(ContactContext);
+  const [authState, authDispatch] = useAuth();
+  const { isAuthenticated, user } =authState;
 
-  const { isAuthenticated, logout, user } = authContext;
-  const { clearContacts } = contactContext;
+  const contactDispatch = useContacts()[1];
 
   const onLogout = () => {
-    logout();
-    clearContacts();
+    logout(authDispatch);
+    clearContacts(contactDispatch);
   };
 
   const authLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
       <li>
-        <a onClick={onLogout} href='#!'>
+        <Link onClick={onLogout} href='#!'>
           <i className='fas fa-sign-out-alt'></i>
           <span className='hide-sm'>Logout</span>
-        </a>
+        </Link>
       </li>
     </Fragment>
   );
@@ -41,7 +40,9 @@ const Navbar = ({ title, icon }) => {
   return (
     <div className='navbar bg-primary'>
       <h1>
+        <Link to='/'>
         <i className={icon} /> {title}
+        </Link>
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
@@ -50,12 +51,12 @@ const Navbar = ({ title, icon }) => {
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string,
+  icon: PropTypes.string
 };
 
 Navbar.defaultProps = {
   title: 'Contact Keeper',
-  icon: 'fas fa-id-card-alt',
+  icon: 'fas fa-id-card-alt'
 };
 
 export default Navbar;
