@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+// import { Navigate } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
@@ -47,6 +48,8 @@ const Register = (props) => {
       });
     }
   };
+
+  // if (isAuthenticated) return <Navigate to='/' />;
 
   return (
     <div className='form-container'>
