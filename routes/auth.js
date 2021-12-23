@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
-const { body, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
@@ -29,8 +29,8 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-    body('email', 'Please include a valid email').isEmail(),
-    body('password', 'Password is required').exists(),
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'Password is required').exists()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -52,8 +52,8 @@ router.post(
       }
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
       jwt.sign(
         payload,
