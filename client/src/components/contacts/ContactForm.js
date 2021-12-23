@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { addContact, useContacts, updateContact, clearCurrent } from '../../context/contact/ContactState';
 
 const initialContact = {
