@@ -28,7 +28,8 @@ router.get('/', auth, async (req, res) => {
 
 router.post(
   '/',
-  [auth, [check('name', 'Name is required').not().isEmpty()]],
+  [auth, 
+    [check('name', 'Name is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -42,7 +43,7 @@ router.post(
         email,
         phone,
         type,
-        user: req.user.id,
+        user: req.user.id
       });
 
       const contact = await newContact.save();
@@ -111,7 +112,7 @@ router.delete('/:id', auth, async (req, res) => {
 
     res.json({ msg: 'Contact removed' });
   } catch (err) {
-    console.error(er.message);
+    console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
