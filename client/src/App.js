@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
@@ -15,10 +15,10 @@ import './App.css';
 
 const App = () => {
   return (
-    <AuthState>
+      <AuthState>
       <ContactState>
         <AlertState>
-          <BrowserRouter>
+          <Router>
             <Fragment>
               <Navbar />
               <div className='container'>
@@ -31,7 +31,7 @@ const App = () => {
                 </Routes>
               </div>
             </Fragment>
-          </BrowserRouter>
+          </Router>
           </AlertState>
       </ContactState>
     </AuthState>
