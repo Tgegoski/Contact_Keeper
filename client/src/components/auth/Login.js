@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import { useAuth, clearErrors, login } from '../../context/auth/AuthState';
 
@@ -38,7 +38,7 @@ const Login = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to='/' />;
+  if (isAuthenticated) return <Link to='/' />;
 
   return (
     <div className='form-container'>

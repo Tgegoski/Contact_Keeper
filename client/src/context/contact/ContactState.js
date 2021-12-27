@@ -44,7 +44,7 @@ export const useContacts = () => {
 
       dispatch({
         type: ADD_CONTACT,
-        payload: res.data,
+        payload: res.data
       });
     } catch (err) {
       dispatch({

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import { useAuth, clearErrors, register } from '../../context/auth/AuthState';
 
@@ -43,7 +43,7 @@ const Register = (props) => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to='/' />;
+  if (isAuthenticated) return <Link to='/' />;
 
   return (
     <div className='form-container'>
