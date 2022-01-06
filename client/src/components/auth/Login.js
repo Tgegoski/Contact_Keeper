@@ -19,7 +19,7 @@ const Login = () => {
 
   const [user, setUser] = useState({
     email: '',
-    password: '',
+    password: ''
   });
 
   const { email, password } = user;
@@ -33,7 +33,7 @@ const Login = () => {
     } else {
       login(authDispatch, {
         email,
-        password,
+        password
       });
     }
   };

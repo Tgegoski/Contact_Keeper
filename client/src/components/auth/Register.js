@@ -5,13 +5,13 @@ import { useAuth, clearErrors, register } from '../../context/auth/AuthState';
 
 const Register = (props) => {
   const alertContext = useContext(AlertContext);
-  const [authState,authDispatch] = useAuth();
-  const {error, isAuthenticated } = authState;
+  const [authState, authDispatch] = useAuth();
+  const { error, isAuthenticated } = authState;
 
   const { setAlert } = alertContext;
 
   useEffect(() => {
-      if (error === 'User already exists') {
+    if (error === 'User already exists') {
       setAlert(error, 'danger');
       clearErrors(authDispatch);
     }
@@ -38,7 +38,7 @@ const Register = (props) => {
       register(authDispatch, {
         name,
         email,
-        password
+        password,
       });
     }
   };
