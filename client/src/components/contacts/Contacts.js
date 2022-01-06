@@ -13,7 +13,7 @@ const Contacts = () => {
     getContacts(contactDispatch);
   }, [contactDispatch]);
 
-  if (contacts !== null && contacts.length === 0)  {
+  if (contacts !== null && contacts.length === 0) {
     return <h4>Please add a contact</h4>;
   }
 
@@ -23,20 +23,13 @@ const Contacts = () => {
         <TransitionGroup>
           {filtered !== null
             ? filtered.map((contact) => (
-                <CSSTransition 
-                key={contact._id} 
-                timeout={500} 
-                className='item'>
+                <CSSTransition key={contact._id} timeout={500} className='item'>
                   <ContactItem contact={contact} />
                 </CSSTransition>
               ))
             : contacts.map((contact) => (
-                <CSSTransition 
-                key={contact._id} 
-                timeout={500} 
-                className='item'>
-                  <ContactItem 
-                  contact={contact} />
+                <CSSTransition key={contact._id} timeout={500} className='item'>
+                  <ContactItem contact={contact} />
                 </CSSTransition>
               ))}
         </TransitionGroup>

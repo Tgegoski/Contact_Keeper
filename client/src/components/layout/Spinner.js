@@ -3,7 +3,7 @@ import spinner from './spinner.gif';
 
 const Spinner = () => (
   <img
-    src={spinner} 
+    src={spinner}
     style={{ width: '200px', margin: 'auto', display: 'block' }}
     alt='Loading...'
   />

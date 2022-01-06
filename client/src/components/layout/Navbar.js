@@ -6,7 +6,7 @@ import { useContacts, clearContacts } from '../../context/contact/ContactState';
 
 const Navbar = ({ title, icon }) => {
   const [authState, authDispatch] = useAuth();
-  const { isAuthenticated, user } =authState;
+  const { isAuthenticated, user } = authState;
 
   const contactDispatch = useContacts()[1];
 
@@ -41,7 +41,7 @@ const Navbar = ({ title, icon }) => {
     <div className='navbar bg-primary'>
       <h1>
         <Link to='/'>
-        <i className={icon} /> {title}
+          <i className={icon} /> {title}
         </Link>
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
@@ -51,12 +51,12 @@ const Navbar = ({ title, icon }) => {
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string
+  icon: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   title: 'Contact Keeper',
-  icon: 'fas fa-id-card-alt'
+  icon: 'fas fa-id-card-alt',
 };
 
 export default Navbar;

@@ -1,10 +1,14 @@
 import React from 'react';
-import { useContacts, filterContacts, clearFilter } from '../../context/contact/ContactState';
+import {
+  useContacts,
+  filterContacts,
+  clearFilter,
+} from '../../context/contact/ContactState';
 
 const ContactFilter = () => {
   const contactDispatch = useContacts()[1];
 
-   const onChange = (e) => {
+  const onChange = (e) => {
     if (e.target.value !== '') {
       filterContacts(contactDispatch, e.target.value);
     } else {
@@ -14,11 +18,7 @@ const ContactFilter = () => {
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
-      <input
-        type='text'
-        placeholder='Filter Contacts...'
-        onChange={onChange}
-      />
+      <input type='text' placeholder='Filter Contacts...' onChange={onChange} />
     </form>
   );
 };

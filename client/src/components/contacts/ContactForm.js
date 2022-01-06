@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { addContact, useContacts, updateContact, clearCurrent } from '../../context/contact/ContactState';
+import {
+  addContact,
+  useContacts,
+  updateContact,
+  clearCurrent,
+} from '../../context/contact/ContactState';
 
 const initialContact = {
   name: '',
   email: '',
   phone: '',
-  type: 'personal'
+  type: 'personal',
 };
 
 const ContactForm = () => {
@@ -20,9 +25,8 @@ const ContactForm = () => {
       setContact(current);
     } else {
       setContact(initialContact);
-    }    
-      }, [current]);
-      
+    }
+  }, [current]);
 
   const { name, email, phone, type } = contact;
 
@@ -33,7 +37,7 @@ const ContactForm = () => {
     e.preventDefault();
     if (current === null) {
       addContact(contactDispatch, contact).then(() =>
-      setContact(initialContact)
+        setContact(initialContact)
       );
     } else {
       updateContact(contactDispatch, contact);

@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useContacts, deleteContact, setCurrent, clearCurrent } from '../../context/contact/ContactState';
+import {
+  useContacts,
+  deleteContact,
+  setCurrent,
+  clearCurrent,
+} from '../../context/contact/ContactState';
 
 const ContactItem = ({ contact }) => {
   const contactDispatch = useContacts()[1];
@@ -54,7 +59,7 @@ const ContactItem = ({ contact }) => {
 };
 
 ContactItem.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
 };
 
 export default ContactItem;
